@@ -101,41 +101,45 @@ const Membership = () => {
     { id: 'student-12', title: "1 Year", price: "C$404.35", duration: "Year", months: 12 }
   ];
 
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-    gap: '2rem',
-    marginBottom: '5rem'
-  };
 
   return (
-    <div className="membership-page">
+    <div className="membership-container">
       <section style={{
         backgroundColor: 'var(--secondary)',
         color: 'white',
-        padding: '120px 0 80px',
+        padding: 'clamp(5rem, 10vw, 8rem) 1rem 5rem',
         textAlign: 'center'
       }}>
         <div className="container" style={{ marginTop: '0' }}>
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', fontWeight: 900 }}>MEMBERSHIPS</h1>
-          <p style={{ maxWidth: '700px', margin: '0 auto', color: '#aaa', fontSize: '1.1rem' }}>
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', 
+            marginBottom: '1.5rem', 
+            fontWeight: 900,
+            lineHeight: 1.1 
+          }}>MEMBERSHIPS</h1>
+          <p style={{ 
+            maxWidth: '700px', 
+            margin: '0 auto', 
+            color: 'rgba(255,255,255,0.7)', 
+            fontSize: 'clamp(1rem, 3vw, 1.1rem)' 
+          }}>
             Choose the plan that fits your lifestyle and start your fitness journey today.
             Flexible options for every commitment level.
           </p>
         </div>
       </section>
 
-      <section className="section" style={{ backgroundColor: '#fcfcfc' }}>
-        <div className="container" style={{ marginTop: '-80px', position: 'relative', zIndex: 10 }}>
-          <div style={{ ...gridStyle as any, gridTemplateColumns: 'repeat(4, 1fr)' }}>
+      <section className="section" style={{ backgroundColor: '#fcfcfc', padding: '0 0 5rem' }}>
+        <div className="container" style={{ marginTop: '-40px', position: 'relative', zIndex: 10 }}>
+          <div className="plans-grid">
             {plans.map((plan, i) => (
               <MembershipPlan key={i} {...plan} onSelect={() => handleSelect(plan)} />
             ))}
           </div>
 
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div style={{ textAlign: 'center', margin: '4rem 0 3rem' }}>
             <h2 style={{
-              fontSize: '2.5rem',
+              fontSize: 'clamp(1.8rem, 6vw, 2.5rem)',
               fontWeight: 900,
               textTransform: 'uppercase',
               color: 'var(--black)',
@@ -146,37 +150,42 @@ const Membership = () => {
             <div style={{ width: '60px', height: '4px', backgroundColor: 'var(--primary)', margin: '0 auto' }}></div>
           </div>
 
-          <div style={{ ...gridStyle as any, gridTemplateColumns: 'repeat(4, 1fr)' }}>
+          <div className="plans-grid">
             {studentSeniorPlans.map((plan, i) => (
               <MembershipPlan key={i} {...plan} onSelect={() => handleSelect(plan)} />
             ))}
           </div>
 
           <div style={{
-            padding: '4rem',
-            backgroundColor: 'var(--white)',
+            padding: 'clamp(2rem, 5vw, 4rem)',
+            backgroundColor: 'white',
             borderRadius: '16px',
             boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-            borderLeft: '8px solid var(--primary)'
+            borderLeft: '8px solid var(--primary)',
+            marginTop: '3rem'
           }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem', fontWeight: 800 }}>Important Information</h2>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', marginBottom: '2.5rem', fontWeight: 800 }}>Important Information</h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', 
+              gap: 'clamp(1.5rem, 5vw, 3rem)' 
+            }}>
               <div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 700 }}>For New Members</h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: '1.7' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 700 }}>For New Members</h3>
+                <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.95rem' }}>
                   After completing your membership purchase online, please visit us during our opening hours to complete your registration and pick up your access card (Key Fob).
                 </p>
               </div>
               <div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 700 }}>Online Renewals</h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: '1.7' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 700 }}>Online Renewals</h3>
+                <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.95rem' }}>
                   Active members can renew online. Please note that it may take up to 24 hours for your access card (Key Fob) to be updated in our system after purchase.
                 </p>
               </div>
               <div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1.2rem', color: 'var(--primary)', fontWeight: 700 }}>Eligibility</h3>
-                <p style={{ color: 'var(--text-muted)', lineHeight: '1.7' }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--primary)', fontWeight: 700 }}>Eligibility</h3>
+                <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', fontSize: '0.95rem' }}>
                   Special discounted rates for students and seniors require a valid ID (Student ID or Government ID for 65+) to be presented upon your first visit.
                 </p>
               </div>
@@ -186,14 +195,27 @@ const Membership = () => {
       </section>
 
       <style>{`
+        .plans-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          margin-bottom: 3rem;
+        }
         @media (max-width: 1200px) {
-          .container > div[style*="gridTemplateColumns: repeat(4"] {
-            grid-template-columns: repeat(2, 1fr) !important;
+          .plans-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
-        @media (max-width: 600px) {
-          .container > div[style*="gridTemplateColumns: repeat(4"] {
-            grid-template-columns: 1fr !important;
+        @media (max-width: 768px) {
+          .plans-grid {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 2.5rem;
+          }
+          .plans-grid > div {
+            transform: none !important; /* Disable scale on mobile to avoid layout shifts */
           }
         }
       `}</style>
